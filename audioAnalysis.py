@@ -339,7 +339,7 @@ def main(argv):
 			smoothingWindow = float(argv[3])
 			weight = float(argv[4])
 			[Fs, x] = audioBasicIO.readAudioFile(inputFile)						# read audio signal
-			segmentLimits = aS.silenceRemoval(x, Fs, 0.05, 0.05, smoothingWindow, weight, True)	# get onsets
+			segmentLimits = aS.silenceRemoval(x, Fs, 0.05, 0.05, smoothingWindow, weight, False)	# get onsets
 			for i, s in enumerate(segmentLimits):
 				strOut = "{0:s}_{1:.3f}-{2:.3f}.wav".format(inputFile[0:-4], s[0], s[1])
 				wavfile.write( strOut, Fs, x[int(Fs*s[0]):int(Fs*s[1])])
